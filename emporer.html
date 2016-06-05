@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+h1 {
+    border-bottom: 3px solid #cc9900;
+    color: #996600;
+    font-size: 30px;
+}
+table, th , td  {
+    border: 1px solid grooveey;
+    border-collapse: collapse;
+    padding: 5px;
+}
+table tr:nth-child(odd)	{
+    background-color: #f1f1f1;
+}
+table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Dogs</h1>
+<div id="id01"></div>
+
+<script>
+// google chrome debugger tutorial will help: https://www.youtube.com/watch?v=htZAU7FM7GI
+
+
+out = "";
+
+// original classes
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+    this.isAlive = true;
+}
+function Penguin(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+function Emperor(name) {
+    this.name = name;
+    this.saying = "Waddle waddle";
+}
+
+// set up the prototype chain
+Penguin.prototype = new Animal();
+Emperor.prototype = new Penguin();
+
+var myEmperor = new Emperor("Jules");
+
+console.log(myEmperor.saying); // should print "Waddle waddle"
+console.log(myEmperor.numLegs); // should print 2
+console.log(myEmperor.isAlive); // should print true
+
+Dog.prototype.sayHello = function() {
+	out += '<p>'
+    out += "Hello this is a " + this.breed + " dog";
+    out += "</p>";
+    document.getElementById("id01").innerHTML = out;
+};
+
+</script>
+
+</body>
+</html>
